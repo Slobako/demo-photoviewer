@@ -8,33 +8,42 @@
 
 import UIKit
 
-class ThumbnailsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class ThumbnailsViewController: UIViewController {
     
     // MARK: - IBOutlets
-    @IBOutlet weak var thumbnailCollectionView: UICollectionView!
+    @IBOutlet weak var tableView: UITableView!
     
     // MARK: - Properties
     let thumbnailCellIdentifier = "ThumbnailCell"
+    var arrayOfThumbnails = [Photo]()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let thumbCellNib = UINib(nibName: "ThumbnailCollectionViewCell", bundle: nil)
-        thumbnailCollectionView.register(thumbCellNib, forCellWithReuseIdentifier: thumbnailCellIdentifier)
+        
+        DownloadManager.shared.downloadPhotos { (arrayOfPhotos) in
+            self.arrayOfThumbnails = arrayOfPhotos
+            print("There are \(arrayOfPhotos.count) photo dicts.")
+        }
+        
+        let thumbCellNib = UINib(nibName: "ThumbnailTableViewCell", bundle: nil)
+        tableView.register(thumbCellNib, forCellReuseIdentifier: thumbnailCellIdentifier)
     }
     
-    // MARK: - CollectionView delegate and data source
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 9
+}
+
+extension ThumbnailsViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return arrayOfThumbnails.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: thumbnailCellIdentifier, for: indexPath) as? ThumbnailCollectionViewCell else { return UICollectionViewCell() }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+       
         
-        
-        
-        return cell
+        return UITableViewCell()
     }
-
+    
+    
+    
 }

@@ -54,6 +54,19 @@ extension ThumbnailsViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let detailsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailsVC") as? DetailsViewController else { return }
+        let navigationController = UINavigationController(rootViewController: detailsVC)
+        detailsVC.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(dismissModal))
+        detailsVC.navigationItem.title = "THUMBNAIL DETAILS"
+        let selectedCell = tableView.cellForRow(at: indexPath) as! ThumbnailTableViewCell
+        detailsVC.photo = selectedCell.photo
+        
+        present(navigationController, animated: true, completion: nil)
+    }
+ 
+    @objc func dismissModal() {
+        dismiss(animated: true, completion: nil)
+    }
 }

@@ -23,6 +23,9 @@ class ThumbnailsViewController: UIViewController {
         
         DownloadManager.shared.downloadPhotos { (arrayOfPhotos) in
             self.arrayOfThumbnails = arrayOfPhotos
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
             print("There are \(arrayOfPhotos.count) photo dicts.")
         }
         
@@ -38,10 +41,17 @@ extension ThumbnailsViewController: UITableViewDelegate, UITableViewDataSource {
         return arrayOfThumbnails.count
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: thumbnailCellIdentifier, for: indexPath) as? ThumbnailTableViewCell else { return UITableViewCell() }
         
-        return UITableViewCell()
+        cell.photo = arrayOfThumbnails[indexPath.row]
+        
+        return cell
     }
     
     

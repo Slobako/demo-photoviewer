@@ -73,10 +73,10 @@
 		4575B5A82227DADD009A4D82 /* PhotoViewer */ = {
 			isa = PBXGroup;
 			children = (
-				45CAEE44229BA36B00726823 /* Model */,
 				4575B5A92227DADD009A4D82 /* AppDelegate.swift */,
-				45994390229E3D8200680092 /* UIViewController-Extension.swift */,
-				45CAEE47229BA82500726823 /* DownloadManager.swift */,
+				45CAEE44229BA36B00726823 /* Model */,
+				45994392229E50FF00680092 /* Extensions */,
+				45994393229E510B00680092 /* Services */,
 				4575B5BE2227DE17009A4D82 /* View Controllers */,
 				4575B5BF2227E12B009A4D82 /* Views */,
 				4575B5BB2227DD4A009A4D82 /* Storyboards */,
@@ -111,6 +111,22 @@
 				45CAEE41229BA33E00726823 /* ThumbnailTableViewCell.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		45994392229E50FF00680092 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				45994390229E3D8200680092 /* UIViewController-Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		45994393229E510B00680092 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				45CAEE47229BA82500726823 /* DownloadManager.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		45CAEE44229BA36B00726823 /* Model */ = {

@@ -15,26 +15,50 @@ class ThumbnailsViewController: UIViewController {
     
     // MARK: - Properties
     let thumbnailCellIdentifier = "ThumbnailCell"
+    let thumbnailCellNibName = "ThumbnailTableViewCell"
     var arrayOfThumbnails = [Photo]()
+    
+    let refreshControl = UIRefreshControl()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        DownloadManager.shared.downloadPhotos { (arrayOfPhotos) in
+        fetchPhotos()
+        setTableView()
+    }
+    
+    func fetchPhotos() {
+        DownloadManager.shared.downloadPhotos { [unowned self] (arrayOfPhotos) in
+            self.arrayOfThumbnails.removeAll()
             self.arrayOfThumbnails = arrayOfPhotos
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                if self.refreshControl.isRefreshing {
+                    self.refreshControl.endRefreshing()
+                }
             }
             print("There are \(arrayOfPhotos.count) photo dicts.")
         }
-        
-        let thumbCellNib = UINib(nibName: "ThumbnailTableViewCell", bundle: nil)
-        tableView.register(thumbCellNib, forCellReuseIdentifier: thumbnailCellIdentifier)
     }
     
+    func setTableView() {
+        let thumbCellNib = UINib(nibName: thumbnailCellNibName, bundle: nil)
+        tableView.register(thumbCellNib, forCellReuseIdentifier: thumbnailCellIdentifier)
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
+        }
+        refreshControl.addTarget(self, action: #selector(refreshFeed), for: .valueChanged)
+    }
+    
+    @objc func refreshFeed() {
+        fetchPhotos()
+    }
 }
 
+// MARK: - TableView Data Source & Delegate
 extension ThumbnailsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -58,16 +82,11 @@ extension ThumbnailsViewController: UITableViewDelegate, UITableViewDataSource {
         
         tableView.deselectRow(at: indexPath, animated: false)
         
+        // Instantiate detail view controller for selected row/image
         guard let detailsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailsVC") as? DetailsViewController else { return }
         let navigationController = UINavigationController(rootViewController: detailsVC)
         detailsVC.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(dismissModal))
         
-        let selectedCell = tableView.cellForRow(at: indexPath) as! ThumbnailTableViewCell
-        if let id = selectedCell.photo?.id {
-            detailsVC.navigationItem.title = String(id)
-        } else {
-            detailsVC.navigationItem.title = ""
-        }
         detailsVC.arrayOfPhotos = arrayOfThumbnails
         detailsVC.indexOfSelected = indexPath.row
         

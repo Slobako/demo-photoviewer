@@ -31,6 +31,7 @@ class DetailsViewController: UIViewController {
     }
     
     // MARK: - IBActions
+    // Displays next image
     @IBAction func nextTapped(_ sender: Any) {
         indexOfSelected += 1
         if indexOfSelected < arrayOfPhotos.count {
@@ -42,7 +43,7 @@ class DetailsViewController: UIViewController {
         }
     }
     
-    
+    // Displays previous image
     @IBAction func previousTapped(_ sender: Any) {
         indexOfSelected -= 1
         if indexOfSelected >= 0 {
@@ -55,6 +56,7 @@ class DetailsViewController: UIViewController {
         
     }
     
+    // Sets id number, title and image
     func setTitleAndImageWith(photo: Photo) {
         if let id = photo.id {
             navigationItem.title = String(id)
@@ -69,9 +71,14 @@ class DetailsViewController: UIViewController {
                 self.titleLabel.text = title.uppercased()
             },
                               completion: nil)
-            //titleLabel.text = title.uppercased()
         } else {
-            titleLabel.text = "TITLE MISSING"
+            UIView.transition(with: titleLabel,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {
+                                self.titleLabel.text = "TITLE MISSING"
+            },
+                              completion: nil)
         }
         if let urlString = photo.url {
             if let url = URL(string: urlString) {
@@ -82,7 +89,6 @@ class DetailsViewController: UIViewController {
                                     self.photoImageView?.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder_panda"))
                 },
                                   completion: nil)
-                //self.photoImageView?.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder_panda"))
             }
         }
     }

@@ -12,6 +12,7 @@
 		4575B5B12227DAE0009A4D82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4575B5B02227DAE0009A4D82 /* Assets.xcassets */; };
 		4575B5B42227DAE0009A4D82 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4575B5B22227DAE0009A4D82 /* LaunchScreen.storyboard */; };
 		4575B5BD2227DDED009A4D82 /* ThumbnailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4575B5BC2227DDED009A4D82 /* ThumbnailsViewController.swift */; };
+		45994391229E3D8200680092 /* UIViewController-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45994390229E3D8200680092 /* UIViewController-Extension.swift */; };
 		45CAEE42229BA33E00726823 /* ThumbnailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CAEE40229BA33E00726823 /* ThumbnailTableViewCell.swift */; };
 		45CAEE43229BA33E00726823 /* ThumbnailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45CAEE41229BA33E00726823 /* ThumbnailTableViewCell.xib */; };
 		45CAEE46229BA38500726823 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CAEE45229BA38500726823 /* Photo.swift */; };
@@ -28,6 +29,7 @@
 		4575B5B32227DAE0009A4D82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4575B5B52227DAE0009A4D82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4575B5BC2227DDED009A4D82 /* ThumbnailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailsViewController.swift; sourceTree = "<group>"; };
+		45994390229E3D8200680092 /* UIViewController-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController-Extension.swift"; sourceTree = "<group>"; };
 		45CAEE40229BA33E00726823 /* ThumbnailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailTableViewCell.swift; sourceTree = "<group>"; };
 		45CAEE41229BA33E00726823 /* ThumbnailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThumbnailTableViewCell.xib; sourceTree = "<group>"; };
 		45CAEE45229BA38500726823 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 			children = (
 				45CAEE44229BA36B00726823 /* Model */,
 				4575B5A92227DADD009A4D82 /* AppDelegate.swift */,
+				45994390229E3D8200680092 /* UIViewController-Extension.swift */,
 				45CAEE47229BA82500726823 /* DownloadManager.swift */,
 				4575B5BE2227DE17009A4D82 /* View Controllers */,
 				4575B5BF2227E12B009A4D82 /* Views */,
@@ -257,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4575B5BD2227DDED009A4D82 /* ThumbnailsViewController.swift in Sources */,
+				45994391229E3D8200680092 /* UIViewController-Extension.swift in Sources */,
 				45CAEE48229BA82500726823 /* DownloadManager.swift in Sources */,
 				45CAEE42229BA33E00726823 /* ThumbnailTableViewCell.swift in Sources */,
 				45CAEE46229BA38500726823 /* Photo.swift in Sources */,

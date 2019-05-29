@@ -27,9 +27,9 @@ class ThumbnailTableViewCell: UITableViewCell {
             }
             if let thumbnailUrlString = photo?.thumbnailUrl {
                 if let thumbnailUrl = URL(string: thumbnailUrlString) {
-                    DispatchQueue.main.async {
+                    //DispatchQueue.main.async {
                         self.thumbnailImageView?.sd_setImage(with: thumbnailUrl, placeholderImage: UIImage(named: "placeholder_panda"))
-                    }
+                   // }
                 }
             }
         }
@@ -37,7 +37,7 @@ class ThumbnailTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
         thumbnailImageView.layer.masksToBounds = true
         thumbnailImageView.clipsToBounds = true
         thumbnailImageView.layer.cornerRadius = 5

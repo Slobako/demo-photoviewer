@@ -23,13 +23,14 @@
                                     <constraint firstAttribute="height" constant="30" id="9dj-KD-wSc"/>
                                     <constraint firstAttribute="width" constant="200" id="D3h-mC-Y9r"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2un-Vb-C30">
-                                <rect key="frame" x="0.0" y="50" width="375" height="617"/>
+                                <rect key="frame" x="0.0" y="55" width="375" height="612"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="6O5-tK-ZRa"/>
@@ -40,7 +41,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="2un-Vb-C30" firstAttribute="top" secondItem="ak4-uU-KhM" secondAttribute="bottom" id="8iN-50-lwp"/>
+                            <constraint firstItem="2un-Vb-C30" firstAttribute="top" secondItem="ak4-uU-KhM" secondAttribute="bottom" constant="5" id="8iN-50-lwp"/>
                             <constraint firstItem="ak4-uU-KhM" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="NMq-Hh-HwD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2un-Vb-C30" secondAttribute="trailing" id="UOR-mM-Ccs"/>
                             <constraint firstItem="2un-Vb-C30" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fIh-Ky-3I3"/>
@@ -64,13 +65,85 @@
                     <view key="view" contentMode="scaleToFill" id="KD1-3p-eO4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="rec-xG-zv6">
+                                <rect key="frame" x="20" y="60" width="335" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="Cvp-Dl-zqm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="D9n-3v-FrL">
+                                <rect key="frame" x="20" y="160" width="335" height="335"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="D9n-3v-FrL" secondAttribute="height" multiplier="1:1" id="j5Y-0H-F1Y"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="vMA-vH-WY6">
+                                <rect key="frame" x="72.5" y="535" width="230" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lFc-bj-Iot">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="SqY-UD-aM1"/>
+                                            <constraint firstAttribute="width" constant="100" id="iLa-k8-b1B"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
+                                        <state key="normal" title="PREVIOUS"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="previousTapped:" destination="JEk-Dy-skJ" eventType="touchUpInside" id="ECa-Tq-4O9"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R9W-FF-zAw">
+                                        <rect key="frame" x="130" y="0.0" width="100" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="DFy-UQ-lXE"/>
+                                            <constraint firstAttribute="height" constant="40" id="yy4-OZ-XNt"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
+                                        <state key="normal" title="NEXT"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="nextTapped:" destination="JEk-Dy-skJ" eventType="touchUpInside" id="yxV-Cg-KV4"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="D9n-3v-FrL" firstAttribute="top" secondItem="rec-xG-zv6" secondAttribute="bottom" constant="20" id="CCt-0V-7O2"/>
+                            <constraint firstItem="rec-xG-zv6" firstAttribute="top" secondItem="vy4-YO-aKl" secondAttribute="top" constant="40" id="I6h-Qi-rDj"/>
+                            <constraint firstItem="vy4-YO-aKl" firstAttribute="trailing" secondItem="rec-xG-zv6" secondAttribute="trailing" constant="20" id="Kmt-aK-B2S"/>
+                            <constraint firstItem="D9n-3v-FrL" firstAttribute="leading" secondItem="vy4-YO-aKl" secondAttribute="leading" constant="20" id="RNv-s7-1xd"/>
+                            <constraint firstItem="vy4-YO-aKl" firstAttribute="trailing" secondItem="D9n-3v-FrL" secondAttribute="trailing" constant="20" id="Wra-n2-SQu"/>
+                            <constraint firstItem="vMA-vH-WY6" firstAttribute="top" secondItem="D9n-3v-FrL" secondAttribute="bottom" constant="40" id="ZX1-JZ-5fw"/>
+                            <constraint firstItem="rec-xG-zv6" firstAttribute="leading" secondItem="vy4-YO-aKl" secondAttribute="leading" constant="20" id="lfg-mK-h2S"/>
+                            <constraint firstItem="vMA-vH-WY6" firstAttribute="centerX" secondItem="D9n-3v-FrL" secondAttribute="centerX" id="wn7-A8-Fea"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="vy4-YO-aKl"/>
                     </view>
+                    <connections>
+                        <outlet property="photoImageView" destination="D9n-3v-FrL" id="0ak-sC-F2c"/>
+                        <outlet property="titleLabel" destination="rec-xG-zv6" id="vDm-yR-rpQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xSh-Ue-bp3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="910" y="29"/>
+            <point key="canvasLocation" x="909.60000000000002" y="28.335832083958024"/>
         </scene>
     </scenes>
 </document>

@@ -50,18 +50,26 @@ extension ThumbnailsViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: thumbnailCellIdentifier, for: indexPath) as? ThumbnailTableViewCell else { return UITableViewCell() }
         
         cell.photo = arrayOfThumbnails[indexPath.row]
-        
+
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        tableView.deselectRow(at: indexPath, animated: false)
+        
         guard let detailsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailsVC") as? DetailsViewController else { return }
         let navigationController = UINavigationController(rootViewController: detailsVC)
         detailsVC.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(dismissModal))
-        detailsVC.navigationItem.title = "THUMBNAIL DETAILS"
+        
         let selectedCell = tableView.cellForRow(at: indexPath) as! ThumbnailTableViewCell
-        detailsVC.photo = selectedCell.photo
+        if let id = selectedCell.photo?.id {
+            detailsVC.navigationItem.title = String(id)
+        } else {
+            detailsVC.navigationItem.title = ""
+        }
+        detailsVC.arrayOfPhotos = arrayOfThumbnails
+        detailsVC.indexOfSelected = indexPath.row
         
         present(navigationController, animated: true, completion: nil)
     }

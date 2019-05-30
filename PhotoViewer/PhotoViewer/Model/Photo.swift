@@ -15,6 +15,7 @@ struct Photo: Decodable {
     let url: String
     let thumbnailUrl: String?
     
+    
     init(url: String, albumId: Int? = nil, id: Int? = nil, title: String? = nil, thumbnailUrl: String? = nil) {
         self.url = url
         self.albumId = albumId

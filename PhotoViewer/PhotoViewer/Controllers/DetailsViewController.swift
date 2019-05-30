@@ -68,6 +68,13 @@ class DetailsViewController: UIViewController {
     func setTitleAndImageWith(photo: Photo) {
         if let id = photo.id {
             navigationItem.title = String(id)
+            let navBar = navigationController?.navigationBar
+            navBar?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(red: 0.0,
+                                                                                         green: 0.702,
+                                                                                          blue: 1.0,
+                                                                                         alpha: 1.0),
+                                           NSAttributedString.Key.font: UIFont(name: "Verdana",
+                                                                               size: 17) ?? UIFont.systemFont(ofSize: UIFont.systemFontSize)]
         } else {
             navigationItem.title = ""
         }
@@ -94,7 +101,8 @@ class DetailsViewController: UIViewController {
                               duration: 0.5,
                               options: .transitionCrossDissolve,
                               animations: {
-                                self.photoImageView?.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder_panda"))
+                                self.photoImageView?.sd_setImage(with: url,
+                                                                  placeholderImage: UIImage(named: "placeholder_panda"))
             },
                               completion: nil)
         }

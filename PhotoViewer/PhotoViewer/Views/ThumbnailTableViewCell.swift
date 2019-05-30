@@ -27,9 +27,7 @@ class ThumbnailTableViewCell: UITableViewCell {
             }
             if let thumbnailUrlString = photo?.thumbnailUrl {
                 if let thumbnailUrl = URL(string: thumbnailUrlString) {
-                    //DispatchQueue.main.async {
-                        self.thumbnailImageView?.sd_setImage(with: thumbnailUrl, placeholderImage: UIImage(named: "placeholder_panda"))
-                   // }
+                    self.thumbnailImageView?.sd_setImage(with: thumbnailUrl, placeholderImage: UIImage(named: "placeholder_panda"))
                 }
             }
         }
@@ -41,6 +39,11 @@ class ThumbnailTableViewCell: UITableViewCell {
         thumbnailImageView.layer.masksToBounds = true
         thumbnailImageView.clipsToBounds = true
         thumbnailImageView.layer.cornerRadius = 5
+        
+        contentView.layer.borderWidth = 4
+        contentView.layer.borderColor = UIColor.white.cgColor
+        contentView.clipsToBounds = true
+        contentView.layer.cornerRadius = 10
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

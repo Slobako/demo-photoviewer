@@ -13,6 +13,8 @@ class DetailsViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var previousButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
     
     // MARK: - Properties
     var arrayOfPhotos = [Photo]()
@@ -22,12 +24,18 @@ class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let photo = arrayOfPhotos[indexOfSelected]
-        setTitleAndImageWith(photo: photo)
-        
         photoImageView.layer.masksToBounds = true
         photoImageView.clipsToBounds = true
         photoImageView.layer.cornerRadius = 5
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if arrayOfPhotos.count > 0 {
+            let photo = arrayOfPhotos[indexOfSelected]
+            setTitleAndImageWith(photo: photo)
+        }
     }
     
     // MARK: - IBActions
@@ -80,17 +88,15 @@ class DetailsViewController: UIViewController {
             },
                               completion: nil)
         }
-        if let urlString = photo.url {
-            if let url = URL(string: urlString) {
-                UIView.transition(with: photoImageView,
-                                  duration: 0.5,
-                                  options: .transitionCrossDissolve,
-                                  animations: {
-                                    self.photoImageView?.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder_panda"))
-                },
-                                  completion: nil)
-            }
+        let urlString = photo.url
+        if let url = URL(string: urlString) {
+            UIView.transition(with: photoImageView,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {
+                                self.photoImageView?.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder_panda"))
+            },
+                              completion: nil)
         }
     }
-    
 }

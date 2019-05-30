@@ -12,7 +12,7 @@
         <!--Thumbnails View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ThumbnailsViewController" customModule="PhotoViewer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ThumbnailsVC" id="BYZ-38-t0r" customClass="ThumbnailsViewController" customModule="PhotoViewer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -137,7 +137,9 @@
                         <viewLayoutGuide key="safeArea" id="vy4-YO-aKl"/>
                     </view>
                     <connections>
+                        <outlet property="nextButton" destination="R9W-FF-zAw" id="72x-mX-nWa"/>
                         <outlet property="photoImageView" destination="D9n-3v-FrL" id="0ak-sC-F2c"/>
+                        <outlet property="previousButton" destination="lFc-bj-Iot" id="6Zb-aH-1E2"/>
                         <outlet property="titleLabel" destination="rec-xG-zv6" id="vDm-yR-rpQ"/>
                     </connections>
                 </viewController>
